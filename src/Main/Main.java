@@ -8,7 +8,7 @@ public class Main {
 
         Student a = new Student();
 
-        a.logIN();
+        a.logIn();
 
 
     }

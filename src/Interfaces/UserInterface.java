@@ -2,7 +2,7 @@ package Interfaces;
 
 public interface UserInterface {
 
-    void logIN();
+    void logIn();
     void logOut();
     void registration();
 

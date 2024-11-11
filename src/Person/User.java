@@ -10,7 +10,7 @@ public abstract class User implements UserInterface {
     protected int password;
 
     @Override
-    public void logIN() {
+    public void logIn() {
         System.out.println("hi");
     }
 
