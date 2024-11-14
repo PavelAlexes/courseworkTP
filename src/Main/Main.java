@@ -6,9 +6,9 @@ import Person.User;
 public class Main {
     public static void main(String[] args) {
 
-        Student a = new Student();
+        Student a = new Student("1", "паша","2", "3");
 
-        a.logIn();
+        System.out.println(a.getSorName());;
 
 
     }
