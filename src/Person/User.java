@@ -5,9 +5,10 @@ import Interfaces.UserInterface;
 public abstract class User implements UserInterface {
     protected String name;
     protected String sorName;
-    protected int ID;
+    protected static int ID;
     protected String login;
     protected String password;
+
 
     //methods-----------------------------------------------------------------------------------------------
 
