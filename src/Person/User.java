@@ -5,27 +5,9 @@ import Interfaces.UserInterface;
 public abstract class User implements UserInterface {
     protected String name;
     protected String sorName;
-    protected static int ID;
+    protected static int ID = 1;
     protected String login;
     protected String password;
-
-
-    //methods-----------------------------------------------------------------------------------------------
-
-    @Override
-    public void logIn() {
-        System.out.println("hi");
-    }
-
-    @Override
-    public void logOut() {
-
-    }
-
-    @Override
-    public void registration(String name, String sorName, String login, String password) {
-
-    }
 
     //constructors-----------------------------------------------------------------------------------------------
 
@@ -34,6 +16,23 @@ public abstract class User implements UserInterface {
         setSorName(sorName);
         setLogin(login);
         setPassword(password);
+    }
+
+    //methods-----------------------------------------------------------------------------------------------
+
+    @Override
+    public void logIn() {
+        System.out.println("hi");
+    }
+    //-------------------------------------------
+    @Override
+    public void logOut() {
+
+    }
+    //-------------------------------------------
+    @Override
+    public void registration(String name, String sorName, String login, String password) {
+
     }
 
     //set-----------------------------------------------------------------------------------------------
@@ -45,7 +44,7 @@ public abstract class User implements UserInterface {
             this.name = name;
         }
     }
-
+    //-------------------------------------------
     public void setSorName(String sorName) {
         sorName = sorName.trim();
         if(!sorName.isEmpty() && !sorName.isBlank()){
@@ -53,14 +52,14 @@ public abstract class User implements UserInterface {
             this.sorName = sorName;
         }
     }
-
+    //-------------------------------------------
     public void setLogin(String login) {
         login = login.trim();
         if(!login.isBlank() && (login.length() > 3 && login.length() < 11)){
             this.login = login;
         }
     }
-
+    //-------------------------------------------
     public void setPassword(String password) {
         if(!password.isBlank() && (password.length() > 3 && password.length() < 11)) {
             this.password = password;
@@ -72,7 +71,7 @@ public abstract class User implements UserInterface {
     public String getName() {
         return name;
     }
-
+    //-------------------------------------------
     public String getSorName() {
         return sorName;
     }
@@ -80,11 +79,11 @@ public abstract class User implements UserInterface {
     public int getID() {
         return ID;
     }
-
+    //-------------------------------------------
     public String getLogin() {
         return login;
     }
-
+    //-------------------------------------------
     public String getPassword() {
         return password;
     }

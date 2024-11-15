@@ -1,5 +1,8 @@
 package Person;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Student extends User{
 
     private String name = null;
@@ -8,19 +11,23 @@ public class Student extends User{
     private String password = null;
     private String group = null;
     private int ID = 0;
+    public static Set<Student> arrStudent = new HashSet<>();
 
+    //constructors-----------------------------------------------------------------------------------------------
 
     public Student(String name, String sorName, String login, String password, String group, int ID) {
         super(name, sorName, login, password);
         setGroup(group);
-        this.ID = ID;
+        setID(ID);
         System.out.println("Создан студент:\n");
         System.out.println("Имя: " + super.name);
         System.out.println("ID: " + this.ID);
     }
 
-    private void examInfoStudent(){}
+    //methods-----------------------------------------------------------------------------------------------
 
+    private void examInfoStudent(){}
+    //-------------------------------------------
     private void passExam(){}
 
     //set-----------------------------------------------------------------------------------------------
@@ -32,10 +39,19 @@ public class Student extends User{
             this.group = group;
         }
     }
+    //-------------------------------------------
+    public void setID(int ID) {
+        this.ID = ID;
+    }
 
     //get-----------------------------------------------------------------------------------------------
 
     public String getGroup() {
         return group;
+    }
+    //-------------------------------------------
+    @Override
+    public int getID() {
+        return ID;
     }
 }

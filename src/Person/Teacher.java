@@ -1,13 +1,19 @@
 package Person;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Teacher extends User{
     private String name = null;
     private String sorName = null;
     private String login = null;
     private String password = null;
     private int ID = 0;
+    public static Set<Teacher> arrTeacher = new HashSet<>();
 
 
+
+    //constructors-----------------------------------------------------------------------------------------------
 
     public Teacher(String name, String sorName, String login, String password, int ID){
         super(name,sorName,login,password);
@@ -22,8 +28,8 @@ public class Teacher extends User{
     //methods-----------------------------------------------------------------------------------------------
 
     private void addExam(){}
-
+    //-------------------------------------------
     private void takeExam(){}
-
+    //-------------------------------------------
     private void examInfoTeacher(){}
 }
