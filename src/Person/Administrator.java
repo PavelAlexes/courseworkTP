@@ -4,16 +4,10 @@ import java.util.Scanner;
 
 public class Administrator extends User{
 
-    private String name = null;
-    private String sorName = null;
-    private String login = null;
-    private String password = null;
-    private int ID = 0;
-
     //constructors-----------------------------------------------------------------------------------------------
 
-    public Administrator(String name, String sorName, String login, String password) {
-        super(name, sorName, login, password);
+    public Administrator(String name, String sorName, String login, String password, int ID) {
+        super(name, sorName, login, password, ID);
 
 
     //TEST??????
@@ -41,9 +35,9 @@ public class Administrator extends User{
                     for (Student x : Student.arrStudent){
                         if(x.getID() == idDelStudent){
                             delStudent(x);
-                            System.out.println("студент " + x.getName() + "удален!");
+                            System.out.println("студент " + x.getName() + " удален!");
+                            break;
                         }
-                        User.ID--;
                     }
 
                 }
@@ -68,17 +62,18 @@ public class Administrator extends User{
 
     private Student newStudent(){
         Scanner scanner = new Scanner(System.in);
-        int idOfStudent = User.ID++;
-        System.out.print("Введите имя:");
+        System.out.print("Введите имя: ");
         String nameOfStudent = scanner.nextLine();
-        System.out.print("Введите фамилию:");
+        System.out.print("Введите фамилию: ");
         String sorNameOfStudent = scanner.nextLine();
-        System.out.print("Введите логин:");
+        System.out.print("Введите логин: ");
         String loginOfStudent = scanner.nextLine();
-        System.out.print("Введите пароль:");
+        System.out.print("Введите пароль: ");
         String passwordOfStudent = scanner.nextLine();
-        System.out.print("Введите группу:");
+        System.out.print("Введите группу: ");
         String groupOfStudent = scanner.nextLine();
+        System.out.print("Введите ID: ");
+        int idOfStudent = scanner.nextInt();
 
         Student student = new Student(nameOfStudent, sorNameOfStudent, loginOfStudent, passwordOfStudent, groupOfStudent, idOfStudent);
 
@@ -91,15 +86,17 @@ public class Administrator extends User{
     //-------------------------------------------
     private Teacher newTeacher(){
         Scanner scanner = new Scanner(System.in);
-        int idOfTeacher = User.ID++;
-        System.out.print("Введите имя:");
+        System.out.print("Введите имя: ");
         String nameOfTeacher = scanner.nextLine();
-        System.out.print("Введите фамилию:");
+        System.out.print("Введите фамилию: ");
         String sorNameOfTeacher = scanner.nextLine();
-        System.out.print("Введите логин:");
+        System.out.print("Введите логин: ");
         String loginOfTeacher = scanner.nextLine();
-        System.out.print("Введите пароль:");
+        System.out.print("Введите пароль: ");
         String passwordOfTeacher = scanner.nextLine();
+        System.out.print("Введите ID: ");
+        int idOfTeacher = scanner.nextInt();
+
 
         Teacher teacher = new Teacher(nameOfTeacher, sorNameOfTeacher, loginOfTeacher, passwordOfTeacher, idOfTeacher);
 

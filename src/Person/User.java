@@ -5,17 +5,18 @@ import Interfaces.UserInterface;
 public abstract class User implements UserInterface {
     protected String name;
     protected String sorName;
-    protected static int ID = 1;
+    protected int ID;
     protected String login;
     protected String password;
 
     //constructors-----------------------------------------------------------------------------------------------
 
-    User(String name, String sorName, String login, String password){
+    User(String name, String sorName, String login, String password, int ID){
         setName(name);
         setSorName(sorName);
         setLogin(login);
         setPassword(password);
+        setID(ID);
     }
 
     //methods-----------------------------------------------------------------------------------------------
@@ -64,6 +65,11 @@ public abstract class User implements UserInterface {
         if(!password.isBlank() && (password.length() > 3 && password.length() < 11)) {
             this.password = password;
         }
+    }
+    //-------------------------------------------
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     //get-----------------------------------------------------------------------------------------------

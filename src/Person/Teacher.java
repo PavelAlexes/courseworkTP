@@ -4,23 +4,18 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Teacher extends User{
-    private String name = null;
-    private String sorName = null;
-    private String login = null;
-    private String password = null;
-    private int ID = 0;
+
     public static Set<Teacher> arrTeacher = new HashSet<>();
-
-
 
     //constructors-----------------------------------------------------------------------------------------------
 
     public Teacher(String name, String sorName, String login, String password, int ID){
-        super(name,sorName,login,password);
-        this.ID = ID;
+        super(name,sorName,login,password, ID);
+
+
         System.out.println("Создан преподаватель:\n");
         System.out.println("Имя: " + super.name);
-        System.out.println("ID: " + this.ID);
+        System.out.println("ID: " + super.ID);
     }
 
 
