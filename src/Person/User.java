@@ -46,6 +46,7 @@ public abstract class User implements UserInterface {
         }
     }
     //-------------------------------------------
+
     public void setSorName(String sorName) {
         sorName = sorName.trim();
         if(!sorName.isEmpty() && !sorName.isBlank()){
@@ -54,6 +55,7 @@ public abstract class User implements UserInterface {
         }
     }
     //-------------------------------------------
+
     public void setLogin(String login) {
         login = login.trim();
         if(!login.isBlank() && (login.length() > 3 && login.length() < 11)){
@@ -61,11 +63,13 @@ public abstract class User implements UserInterface {
         }
     }
     //-------------------------------------------
+
     public void setPassword(String password) {
         if(!password.isBlank() && (password.length() > 3 && password.length() < 11)) {
             this.password = password;
         }
     }
+
     //-------------------------------------------
 
     public void setID(int ID) {

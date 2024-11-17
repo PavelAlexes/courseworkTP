@@ -11,6 +11,7 @@ public class Administrator extends User{
 
 
     //TEST??????
+
         boolean flag = true;
         while (flag) {
 
@@ -91,11 +92,15 @@ public class Administrator extends User{
 
         return student;
     }
+
     //-------------------------------------------
+
     private void delStudent(Student student){
         Student.arrStudent.remove(student);
     }
+
     //-------------------------------------------
+
     private Teacher newTeacher(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите имя: ");
@@ -114,13 +119,18 @@ public class Administrator extends User{
 
         return teacher;
     }
+
     //-------------------------------------------
+
     private void delTeacher(Teacher teacher){
         Teacher.arrTeacher.remove(teacher);
     }
+
     //-------------------------------------------
+
     private void addLesson(){}
     //-------------------------------------------
+
     private void delLesson(){}
 
 

@@ -21,6 +21,7 @@ public class Student extends User{
     //methods-----------------------------------------------------------------------------------------------
 
     private void examInfoStudent(){}
+
     //-------------------------------------------
     private void passExam(){}
 
