@@ -14,7 +14,7 @@ public class Administrator extends User{
         boolean flag = true;
         while (flag) {
 
-            System.out.print("1-студент 2-delStud 3-prepod 4-Зам. Декана: ");
+            System.out.print("1-студент 2-delStud 3-prepod 4-delPrepod 5-Зам. Декана: ");
             Scanner scanner = new Scanner(System.in);
             String choise = scanner.nextLine();
 
@@ -47,7 +47,19 @@ public class Administrator extends User{
                     Teacher.arrTeacher.add(newTeacher());
                     System.out.println(Teacher.arrTeacher);
                 }
-
+                break;
+                case "4": {
+                    System.out.print("введите айди препода, которого хотите удалить: ");
+                    int idDelTeacher = scanner.nextInt();
+                    for (Teacher x : Teacher.arrTeacher){
+                        if(x.getID() == idDelTeacher){
+                            delTeacher(x);
+                            System.out.println("студент " + x.getName() + " удален!");
+                            break;
+                        }
+                    }
+                }
+                break;
 
             }
 
@@ -103,7 +115,9 @@ public class Administrator extends User{
         return teacher;
     }
     //-------------------------------------------
-    private void delTeacher(){}
+    private void delTeacher(Teacher teacher){
+        Teacher.arrTeacher.remove(teacher);
+    }
     //-------------------------------------------
     private void addLesson(){}
     //-------------------------------------------
