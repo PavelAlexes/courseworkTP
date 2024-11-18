@@ -1,5 +1,7 @@
 package Person;
 
+import Lists.Groups.Group;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -31,7 +33,10 @@ public class Student extends User{
         group = group.trim();
         if(!group.isEmpty() && !group.isBlank()){
             group = group.substring(0, 1).toUpperCase() + group.substring(1);
-            this.group = group;
+            if(Group.arrNameOfGroup.contains(group)) {
+                this.group = group;
+
+            }else System.out.println("Вы указали несуществующую группу!");
         }
     }
 
@@ -40,7 +45,9 @@ public class Student extends User{
     public String getGroup() {
         return group;
     }
+
     //-------------------------------------------
+
     @Override
     public int getID() {
         return ID;

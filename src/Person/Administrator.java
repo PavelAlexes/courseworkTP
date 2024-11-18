@@ -1,5 +1,7 @@
 package Person;
 
+import Lists.Groups.Group;
+
 import java.util.Scanner;
 
 public class Administrator extends User{
@@ -77,6 +79,12 @@ public class Administrator extends User{
                         Dean.arrDean.clear();
                         System.out.println("Зам. Декан " + x.getName() + " уволен!");
                     }
+                }
+                break;
+
+                case "7":{
+                    addGroup();
+
                 }
                 break;
             }
@@ -163,7 +171,20 @@ public class Administrator extends User{
 
         //-------------------------------------------
 
-        private void addLesson () {
+    private void addGroup(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите название группы: ");
+        String nameOfGroup = scanner.nextLine();
+
+        Group group = new Group(nameOfGroup);
+
+
+
+    }
+
+        //-------------------------------------------
+
+    private void addLesson () {
         }
 
         //-------------------------------------------
