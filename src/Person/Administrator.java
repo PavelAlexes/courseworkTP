@@ -10,12 +10,11 @@ public class Administrator extends User{
         super(name, sorName, login, password, ID);
 
 
-    //TEST??????
+        //TEST??????
 
         boolean flag = true;
         while (flag) {
 
-            System.out.print("1-студент 2-delStud 3-prepod 4-delPrepod 5-Зам. Декана: ");
             System.out.print("1-студент 2-delStud 3-prepod 4-delPrepod 5-Dean 6-delDean: ");
             Scanner scanner = new Scanner(System.in);
             String choise = scanner.nextLine();
@@ -23,19 +22,17 @@ public class Administrator extends User{
             switch (choise) {
 
                 case "1": {
-                      Student.arrStudent.add(newStudent());
-                      System.out.println(Student.arrStudent);
+                    Student.arrStudent.add(newStudent());
+                    System.out.println(Student.arrStudent);
                 }
                 break;
-
-
 
 
                 case "2": {
                     System.out.print("введите айди студента, которого хотите удалить: ");
                     int idDelStudent = scanner.nextInt();
-                    for (Student x : Student.arrStudent){
-                        if(x.getID() == idDelStudent){
+                    for (Student x : Student.arrStudent) {
+                        if (x.getID() == idDelStudent) {
                             delStudent(x);
                             System.out.println("студент " + x.getName() + " удален!");
                             break;
@@ -45,21 +42,18 @@ public class Administrator extends User{
                 }
                 break;
 
-                case "3":{
+                case "3": {
                     Teacher.arrTeacher.add(newTeacher());
                     System.out.println(Teacher.arrTeacher);
                 }
                 break;
-                case "4": {
-                    System.out.print("введите айди препода, которого хотите удалить: ");
 
-                case "4":{
+                case "4": {
                     System.out.print("введите айди Препода, которого хотите удалить: ");
                     int idDelTeacher = scanner.nextInt();
-                    for (Teacher x : Teacher.arrTeacher){
-                        if(x.getID() == idDelTeacher){
+                    for (Teacher x : Teacher.arrTeacher) {
+                        if (x.getID() == idDelTeacher) {
                             delTeacher(x);
-                            System.out.println("студент " + x.getName() + " удален!");
                             System.out.println("препод " + x.getName() + " удален!");
                             break;
                         }
@@ -67,36 +61,37 @@ public class Administrator extends User{
                 }
                 break;
 
-                case "5":{
-                    if(Dean.arrDean.isEmpty()) {
+                case "5": {
+                    if (Dean.arrDean.isEmpty()) {
                         Dean.arrDean.add(newDean());
-                    }else {
+                    } else {
                         System.out.println("Зам. Декан уже создан!");
                     }
                     System.out.println(Dean.arrDean);
                 }
                 break;
 
-                case "6":{
+                case "6": {
 
-                    for(Dean x : Dean.arrDean) {
+                    for (Dean x : Dean.arrDean) {
                         Dean.arrDean.clear();
-                        System.out.println("Зам. Декан " + x.getName() +" уволен!");
+                        System.out.println("Зам. Декан " + x.getName() + " уволен!");
                     }
                 }
                 break;
             }
 
 
+
+
+
+
         }
-
-
     }
-
 
     //methods-----------------------------------------------------------------------------------------------
 
-    private Student newStudent(){
+    private Student newStudent() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите имя: ");
         String nameOfStudent = scanner.nextLine();
@@ -110,26 +105,25 @@ public class Administrator extends User{
         String groupOfStudent = scanner.nextLine();
         System.out.print("Введите ID: ");
         int idOfStudent = scanner.nextInt();
-
         return new Student(nameOfStudent, sorNameOfStudent, loginOfStudent, passwordOfStudent, groupOfStudent, idOfStudent);
     }
 
     //-------------------------------------------
 
-    private void delStudent(Student student){
+    private void delStudent (Student student){
         Student.arrStudent.remove(student);
     }
 
     //-------------------------------------------
 
 
-    private void delTeacher(Teacher teacher){
+    private void delTeacher (Teacher teacher){
         Teacher.arrTeacher.remove(teacher);
     }
 
     //-------------------------------------------
 
-    private Teacher newTeacher(){
+    private Teacher newTeacher () {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите имя: ");
         String nameOfTeacher = scanner.nextLine();
@@ -148,32 +142,34 @@ public class Administrator extends User{
 
     //-------------------------------------------
 
-    private void delTeacher(Teacher teacher){
-        Teacher.arrTeacher.remove(teacher);
-    private Dean newDean(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Введите имя: ");
-        String nameOfDean = scanner.nextLine();
-        System.out.print("Введите фамилию: ");
-        String sorNameOfDean = scanner.nextLine();
-        System.out.print("Введите логин: ");
-        String loginOfDean = scanner.nextLine();
-        System.out.print("Введите пароль: ");
-        String passwordOfDean = scanner.nextLine();
-        System.out.print("Введите ID: ");
-        int idOfDean = scanner.nextInt();
 
 
-        return new Dean(nameOfDean, sorNameOfDean, loginOfDean, passwordOfDean, idOfDean);
-    }
+        private Dean newDean () {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("Введите имя: ");
+            String nameOfDean = scanner.nextLine();
+            System.out.print("Введите фамилию: ");
+            String sorNameOfDean = scanner.nextLine();
+            System.out.print("Введите логин: ");
+            String loginOfDean = scanner.nextLine();
+            System.out.print("Введите пароль: ");
+            String passwordOfDean = scanner.nextLine();
+            System.out.print("Введите ID: ");
+            int idOfDean = scanner.nextInt();
 
-    //-------------------------------------------
 
-    private void addLesson(){}
+            return new Dean(nameOfDean, sorNameOfDean, loginOfDean, passwordOfDean, idOfDean);
+        }
 
-    //-------------------------------------------
+        //-------------------------------------------
 
-    private void delLesson(){}
+        private void addLesson () {
+        }
+
+        //-------------------------------------------
+
+        private void delLesson () {
+        }
 
 
 
