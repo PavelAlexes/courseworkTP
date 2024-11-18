@@ -2,16 +2,20 @@ package Person;
 
 import Interfaces.UserInterface;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public abstract class User implements UserInterface {
     protected String name;
     protected String sorName;
     protected int ID;
     protected String login;
     protected String password;
+    public static Set<Integer> arrID = new HashSet<>();
 
     //constructors-----------------------------------------------------------------------------------------------
 
-    User(String name, String sorName, String login, String password, int ID){
+    User(String name, String sorName, String login, String password, int ID) throws Exception {
         setName(name);
         setSorName(sorName);
         setLogin(login);
@@ -38,7 +42,7 @@ public abstract class User implements UserInterface {
 
     //set-----------------------------------------------------------------------------------------------
 
-    public void setName(String name) {
+    private void setName(String name) {
         name = name.trim();
         if(!name.isEmpty() && !name.isBlank()){
             name = name.substring(0, 1).toUpperCase() + name.substring(1);
@@ -47,7 +51,7 @@ public abstract class User implements UserInterface {
     }
     //-------------------------------------------
 
-    public void setSorName(String sorName) {
+    private void setSorName(String sorName) {
         sorName = sorName.trim();
         if(!sorName.isEmpty() && !sorName.isBlank()){
             sorName = sorName.substring(0, 1).toUpperCase() + sorName.substring(1);
@@ -56,7 +60,7 @@ public abstract class User implements UserInterface {
     }
     //-------------------------------------------
 
-    public void setLogin(String login) {
+    private void setLogin(String login) {
         login = login.trim();
         if(!login.isBlank() && (login.length() > 3 && login.length() < 11)){
             this.login = login;
@@ -64,7 +68,7 @@ public abstract class User implements UserInterface {
     }
     //-------------------------------------------
 
-    public void setPassword(String password) {
+    private void setPassword(String password) {
         if(!password.isBlank() && (password.length() > 3 && password.length() < 11)) {
             this.password = password;
         }
@@ -72,7 +76,7 @@ public abstract class User implements UserInterface {
 
     //-------------------------------------------
 
-    public void setID(int ID) {
+    private void setID(int ID) {
         this.ID = ID;
     }
 

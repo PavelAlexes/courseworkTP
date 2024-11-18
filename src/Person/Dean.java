@@ -7,7 +7,7 @@ public class Dean extends User{
 
     public static Set<Dean> arrDean = new HashSet<>();
 
-    Dean(String name, String sorName, String login, String password, int ID) {
+    Dean(String name, String sorName, String login, String password, int ID) throws Exception {
         super(name, sorName, login, password, ID);
 
         System.out.println("Создан Зам. Декана:\n");

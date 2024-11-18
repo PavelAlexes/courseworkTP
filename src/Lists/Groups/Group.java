@@ -21,7 +21,7 @@ public class Group {
 
 
 
-    public void setNameOfGroup(String nameOfGroup) {
+    private void setNameOfGroup(String nameOfGroup) {
         nameOfGroup = nameOfGroup.trim();
         if(!nameOfGroup.isEmpty() && !nameOfGroup.isBlank()){
             nameOfGroup = nameOfGroup.substring(0, 1).toUpperCase() + nameOfGroup.substring(1);

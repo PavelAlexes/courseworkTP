@@ -9,7 +9,7 @@ public class Teacher extends User{
 
     //constructors-----------------------------------------------------------------------------------------------
 
-    public Teacher(String name, String sorName, String login, String password, int ID){
+    public Teacher(String name, String sorName, String login, String password, int ID) throws Exception {
         super(name,sorName,login,password, ID);
 
 

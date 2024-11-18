@@ -2,13 +2,15 @@ package Person;
 
 import Lists.Groups.Group;
 
+import java.util.HashSet;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Administrator extends User{
 
     //constructors-----------------------------------------------------------------------------------------------
 
-    public Administrator(String name, String sorName, String login, String password, int ID) {
+    public Administrator(String name, String sorName, String login, String password, int ID) throws Exception {
         super(name, sorName, login, password, ID);
 
 
@@ -17,15 +19,31 @@ public class Administrator extends User{
         boolean flag = true;
         while (flag) {
 
-            System.out.print("1-студент 2-delStud 3-prepod 4-delPrepod 5-Dean 6-delDean: ");
+            System.out.print("1-студент 2-delStud 3-prepod 4-delPrepod 5-Dean 6-delDean 7-addGroup: ");
             Scanner scanner = new Scanner(System.in);
             String choise = scanner.nextLine();
 
             switch (choise) {
 
                 case "1": {
-                    Student.arrStudent.add(newStudent());
-                    System.out.println(Student.arrStudent);
+                    System.out.print("Введите имя: ");
+                    String nameOfStudent = scanner.nextLine();
+                    System.out.print("Введите фамилию: ");
+                    String sorNameOfStudent = scanner.nextLine();
+                    System.out.print("Введите логин: ");
+                    String loginOfStudent = scanner.nextLine();
+                    System.out.print("Введите пароль: ");
+                    String passwordOfStudent = scanner.nextLine();
+                    System.out.print("Введите группу: ");
+                    String groupOfStudent = scanner.nextLine();
+                    System.out.print("Введите ID: ");
+                    int idOfStudent = scanner.nextInt();
+                    addStudent(Student.arrStudent, nameOfStudent,sorNameOfStudent,loginOfStudent,passwordOfStudent,groupOfStudent,idOfStudent);
+
+//
+//                    Student.arrStudent.add(newStudent());
+//                    System.out.println(Student.arrStudent);
+//                    System.out.println(Student.arrStudent.size());
                 }
                 break;
 
@@ -99,22 +117,32 @@ public class Administrator extends User{
 
     //methods-----------------------------------------------------------------------------------------------
 
-    private Student newStudent() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Введите имя: ");
-        String nameOfStudent = scanner.nextLine();
-        System.out.print("Введите фамилию: ");
-        String sorNameOfStudent = scanner.nextLine();
-        System.out.print("Введите логин: ");
-        String loginOfStudent = scanner.nextLine();
-        System.out.print("Введите пароль: ");
-        String passwordOfStudent = scanner.nextLine();
-        System.out.print("Введите группу: ");
-        String groupOfStudent = scanner.nextLine();
-        System.out.print("Введите ID: ");
-        int idOfStudent = scanner.nextInt();
-        return new Student(nameOfStudent, sorNameOfStudent, loginOfStudent, passwordOfStudent, groupOfStudent, idOfStudent);
+    public void addStudent(HashSet<Student> set, String name, String surName, String login, String password, String group, int ID) throws Exception {
+        if (set.isEmpty() || set.contains(null)){
+            set.add(new Student(name, sorName, login, password, group, ID));
+        }else{
+            for(Student x : Student.arrStudent){
+                if(x.getID() == ID){
+                    System.out.println("такой id уже есть!");
+                } else if(Objects.equals(x.getLogin(), login)){
+                    System.out.println("такой login уже есть!");
+                }else if(!Group.arrNameOfGroup.contains(group)){
+                    System.out.println("такой Group НЕ СУЩЕСТВУЕТ!");
+                }else Student.arrStudent.add(new Student(name, sorName, login, password, group, ID));
+
+
+
+
+            }
+        }
     }
+
+//    private Student newStudent() throws Exception {
+//
+//
+//
+//        return new Student(nameOfStudent, sorNameOfStudent, loginOfStudent, passwordOfStudent, groupOfStudent, idOfStudent);
+//    }
 
     //-------------------------------------------
 
@@ -131,7 +159,7 @@ public class Administrator extends User{
 
     //-------------------------------------------
 
-    private Teacher newTeacher () {
+    private Teacher newTeacher () throws Exception {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите имя: ");
         String nameOfTeacher = scanner.nextLine();
@@ -152,7 +180,7 @@ public class Administrator extends User{
 
 
 
-        private Dean newDean () {
+        private Dean newDean () throws Exception {
             Scanner scanner = new Scanner(System.in);
             System.out.print("Введите имя: ");
             String nameOfDean = scanner.nextLine();
