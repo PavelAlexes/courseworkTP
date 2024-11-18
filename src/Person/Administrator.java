@@ -15,11 +15,8 @@ public class Administrator extends User{
         boolean flag = true;
         while (flag) {
 
-<<<<<<< HEAD
             System.out.print("1-студент 2-delStud 3-prepod 4-delPrepod 5-Зам. Декана: ");
-=======
             System.out.print("1-студент 2-delStud 3-prepod 4-delPrepod 5-Dean 6-delDean: ");
->>>>>>> fbac4df79d7917acd1e6df988218806edbd84e90
             Scanner scanner = new Scanner(System.in);
             String choise = scanner.nextLine();
 
@@ -53,23 +50,17 @@ public class Administrator extends User{
                     System.out.println(Teacher.arrTeacher);
                 }
                 break;
-<<<<<<< HEAD
                 case "4": {
                     System.out.print("введите айди препода, которого хотите удалить: ");
-=======
 
                 case "4":{
                     System.out.print("введите айди Препода, которого хотите удалить: ");
->>>>>>> fbac4df79d7917acd1e6df988218806edbd84e90
                     int idDelTeacher = scanner.nextInt();
                     for (Teacher x : Teacher.arrTeacher){
                         if(x.getID() == idDelTeacher){
                             delTeacher(x);
-<<<<<<< HEAD
                             System.out.println("студент " + x.getName() + " удален!");
-=======
                             System.out.println("препод " + x.getName() + " удален!");
->>>>>>> fbac4df79d7917acd1e6df988218806edbd84e90
                             break;
                         }
                     }
@@ -131,15 +122,13 @@ public class Administrator extends User{
 
     //-------------------------------------------
 
-<<<<<<< HEAD
-=======
+
     private void delTeacher(Teacher teacher){
         Teacher.arrTeacher.remove(teacher);
     }
 
     //-------------------------------------------
 
->>>>>>> fbac4df79d7917acd1e6df988218806edbd84e90
     private Teacher newTeacher(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите имя: ");
@@ -159,10 +148,8 @@ public class Administrator extends User{
 
     //-------------------------------------------
 
-<<<<<<< HEAD
     private void delTeacher(Teacher teacher){
         Teacher.arrTeacher.remove(teacher);
-=======
     private Dean newDean(){
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите имя: ");
@@ -178,7 +165,6 @@ public class Administrator extends User{
 
 
         return new Dean(nameOfDean, sorNameOfDean, loginOfDean, passwordOfDean, idOfDean);
->>>>>>> fbac4df79d7917acd1e6df988218806edbd84e90
     }
 
     //-------------------------------------------
