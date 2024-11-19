@@ -9,7 +9,7 @@ public class Main {
 
 
 //        System.out.println(User.arrID.size());
-        Administrator A = new Administrator("A", "2", "W", "W", 0);
+        Administrator A = new Administrator("A", "2", "Weee", "W", 0);
 
 
 

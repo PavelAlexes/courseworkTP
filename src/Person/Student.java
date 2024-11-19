@@ -18,6 +18,7 @@ public class Student extends User{
             System.out.println("Создан студент: ");
             System.out.println("Имя: " + super.name);
             System.out.println("ID: " + super.ID);
+            System.out.println("Login: " + super.login);
 
     }
 

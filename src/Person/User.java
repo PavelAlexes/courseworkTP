@@ -12,6 +12,7 @@ public abstract class User implements UserInterface {
     protected String login;
     protected String password;
     public static Set<Integer> arrID = new HashSet<>();
+    public static Set<String> arrLogin = new HashSet<>();
 
     //constructors-----------------------------------------------------------------------------------------------
 
@@ -60,11 +61,13 @@ public abstract class User implements UserInterface {
     }
     //-------------------------------------------
 
-    private void setLogin(String login) {
+    private void setLogin(String login) throws Exception{
         login = login.trim();
         if(!login.isBlank() && (login.length() > 3 && login.length() < 11)){
             this.login = login;
-        }
+        }else if(login.length() <= 3) {
+            throw new Exception("логин короткий!");
+        }else throw new Exception("логин длинный!");
     }
     //-------------------------------------------
 
@@ -76,7 +79,7 @@ public abstract class User implements UserInterface {
 
     //-------------------------------------------
 
-    private void setID(int ID) {
+    private void setID(Integer ID) {
         this.ID = ID;
     }
 

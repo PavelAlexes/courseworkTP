@@ -2,8 +2,6 @@ package Person;
 
 import Lists.Groups.Group;
 
-import java.util.HashSet;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Administrator extends User{
@@ -26,24 +24,13 @@ public class Administrator extends User{
             switch (choise) {
 
                 case "1": {
-                    System.out.print("Введите имя: ");
-                    String nameOfStudent = scanner.nextLine();
-                    System.out.print("Введите фамилию: ");
-                    String sorNameOfStudent = scanner.nextLine();
-                    System.out.print("Введите логин: ");
-                    String loginOfStudent = scanner.nextLine();
-                    System.out.print("Введите пароль: ");
-                    String passwordOfStudent = scanner.nextLine();
-                    System.out.print("Введите группу: ");
-                    String groupOfStudent = scanner.nextLine();
-                    System.out.print("Введите ID: ");
-                    int idOfStudent = scanner.nextInt();
-                    addStudent(Student.arrStudent, nameOfStudent,sorNameOfStudent,loginOfStudent,passwordOfStudent,groupOfStudent,idOfStudent);
-
-//
-//                    Student.arrStudent.add(newStudent());
-//                    System.out.println(Student.arrStudent);
+                    try {
+                        Student.arrStudent.add(newStudent());
+                        System.out.println(Student.arrStudent);
 //                    System.out.println(Student.arrStudent.size());
+                    }catch (Exception e){
+                        System.out.println(e.getMessage());
+                    }
                 }
                 break;
 
@@ -117,32 +104,61 @@ public class Administrator extends User{
 
     //methods-----------------------------------------------------------------------------------------------
 
-    public void addStudent(HashSet<Student> set, String name, String surName, String login, String password, String group, int ID) throws Exception {
-        if (set.isEmpty() || set.contains(null)){
-            set.add(new Student(name, sorName, login, password, group, ID));
-        }else{
-            for(Student x : Student.arrStudent){
-                if(x.getID() == ID){
-                    System.out.println("такой id уже есть!");
-                } else if(Objects.equals(x.getLogin(), login)){
-                    System.out.println("такой login уже есть!");
-                }else if(!Group.arrNameOfGroup.contains(group)){
-                    System.out.println("такой Group НЕ СУЩЕСТВУЕТ!");
-                }else Student.arrStudent.add(new Student(name, sorName, login, password, group, ID));
+    private String checkLogin(){
 
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите логин: ");
+        String loginOfStudent = scanner.nextLine();
 
+        loginOfStudent = loginOfStudent.trim();
 
-
-            }
+        if (User.arrLogin.contains(loginOfStudent)){
+            System.out.println("Такой логин существует!");
+            checkLogin();
         }
+
+        User.arrLogin.add(loginOfStudent);
+        System.out.println(User.arrLogin);
+        return loginOfStudent;
     }
 
-//    private Student newStudent() throws Exception {
-//
-//
-//
-//        return new Student(nameOfStudent, sorNameOfStudent, loginOfStudent, passwordOfStudent, groupOfStudent, idOfStudent);
-//    }
+    //-------------------------------------------
+
+    private Integer checkID(){
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите ID: ");
+        Integer idOfStudent = scanner.nextInt();
+
+
+
+        if (User.arrID.contains(idOfStudent)){
+            System.out.println("Такой ID существует!");
+            checkID();
+        }
+
+        User.arrID.add(idOfStudent);
+        System.out.println(idOfStudent);
+        return idOfStudent;
+    }
+
+    //-------------------------------------------
+
+    private Student newStudent() throws Exception {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите имя: ");
+        String nameOfStudent = scanner.nextLine();
+        System.out.print("Введите фамилию: ");
+        String sorNameOfStudent = scanner.nextLine();
+        String loginOfStudent = checkLogin();
+        System.out.print("Введите пароль: ");
+        String passwordOfStudent = scanner.nextLine();
+        System.out.print("Введите группу: ");
+        String groupOfStudent = scanner.nextLine();
+        int idOfStudent = checkID();
+
+        return new Student(nameOfStudent, sorNameOfStudent, loginOfStudent, passwordOfStudent, groupOfStudent, idOfStudent);
+    }
 
     //-------------------------------------------
 
