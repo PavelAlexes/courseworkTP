@@ -14,11 +14,11 @@ public class Student extends User{
 
     public Student(String name, String sorName, String login, String password, String group, int ID) throws Exception {
         super(name, sorName, login, password, ID);
-            setGroup(group);
-            System.out.println("Создан студент: ");
-            System.out.println("Имя: " + super.name);
-            System.out.println("ID: " + super.ID);
-            System.out.println("Login: " + super.login);
+        setGroup(group);
+        System.out.println("Создан студент: ");
+        System.out.println("Имя: " + super.name);
+        System.out.println("ID: " + super.ID);
+        System.out.println("Login: " + super.login);
 
     }
 

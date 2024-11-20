@@ -12,8 +12,5 @@ public class Main {
         Administrator A = new Administrator("A", "2", "Weee", "W", 0);
 
 
-
-
-
     }
 }

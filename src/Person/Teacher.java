@@ -12,7 +12,6 @@ public class Teacher extends User{
     public Teacher(String name, String sorName, String login, String password, int ID) throws Exception {
         super(name,sorName,login,password, ID);
 
-
         System.out.println("Создан преподаватель:\n");
         System.out.println("Имя: " + super.name);
         System.out.println("ID: " + super.ID);

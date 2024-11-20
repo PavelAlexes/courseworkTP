@@ -27,7 +27,8 @@ public class Administrator extends User{
                     try {
                         Student.arrStudent.add(newStudent());
                         System.out.println(Student.arrStudent);
-//                    System.out.println(Student.arrStudent.size());
+                        System.out.println(User.arrLogin);
+                        System.out.println(User.arrID);
                     }catch (Exception e){
                         System.out.println(e.getMessage());
                     }
@@ -50,8 +51,15 @@ public class Administrator extends User{
                 break;
 
                 case "3": {
-                    Teacher.arrTeacher.add(newTeacher());
-                    System.out.println(Teacher.arrTeacher);
+                    try {
+                        Teacher.arrTeacher.add(newTeacher());
+                        System.out.println(Teacher.arrTeacher);
+                        System.out.println(User.arrLogin);
+                        System.out.println(User.arrID);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());;
+                    }
+
                 }
                 break;
 
@@ -93,12 +101,6 @@ public class Administrator extends User{
                 }
                 break;
             }
-
-
-
-
-
-
         }
     }
 
@@ -108,18 +110,16 @@ public class Administrator extends User{
 
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите логин: ");
-        String loginOfStudent = scanner.nextLine();
+        String login = scanner.nextLine();
 
-        loginOfStudent = loginOfStudent.trim();
+        login = login.trim();
 
-        if (User.arrLogin.contains(loginOfStudent)){
+        if (User.arrLogin.contains(login)){
             System.out.println("Такой логин существует!");
-            checkLogin();
+            login = checkLogin();
         }
 
-        User.arrLogin.add(loginOfStudent);
-        System.out.println(User.arrLogin);
-        return loginOfStudent;
+        return login;
     }
 
     //-------------------------------------------
@@ -128,23 +128,20 @@ public class Administrator extends User{
 
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите ID: ");
-        Integer idOfStudent = scanner.nextInt();
+        Integer id = scanner.nextInt();
 
-
-
-        if (User.arrID.contains(idOfStudent)){
+        if (User.arrID.contains(id)){
             System.out.println("Такой ID существует!");
-            checkID();
+            id = checkID();
         }
 
-        User.arrID.add(idOfStudent);
-        System.out.println(idOfStudent);
-        return idOfStudent;
+        return id;
     }
 
     //-------------------------------------------
 
     private Student newStudent() throws Exception {
+
         Scanner scanner = new Scanner(System.in);
         System.out.print("Введите имя: ");
         String nameOfStudent = scanner.nextLine();
@@ -157,17 +154,24 @@ public class Administrator extends User{
         String groupOfStudent = scanner.nextLine();
         int idOfStudent = checkID();
 
-        return new Student(nameOfStudent, sorNameOfStudent, loginOfStudent, passwordOfStudent, groupOfStudent, idOfStudent);
+        Student student = new Student(nameOfStudent, sorNameOfStudent, loginOfStudent, passwordOfStudent, groupOfStudent, idOfStudent);
+        User.arrLogin.add(loginOfStudent);
+        User.arrID.add(idOfStudent);
+
+        return student;
     }
 
     //-------------------------------------------
 
     private void delStudent (Student student){
         Student.arrStudent.remove(student);
+        User.arrID.remove(student.getID());
+        User.arrLogin.remove(student.getLogin());
+        System.out.println(User.arrID);
+        System.out.println(User.arrLogin);
     }
 
     //-------------------------------------------
-
 
     private void delTeacher (Teacher teacher){
         Teacher.arrTeacher.remove(teacher);
@@ -181,20 +185,19 @@ public class Administrator extends User{
         String nameOfTeacher = scanner.nextLine();
         System.out.print("Введите фамилию: ");
         String sorNameOfTeacher = scanner.nextLine();
-        System.out.print("Введите логин: ");
-        String loginOfTeacher = scanner.nextLine();
+        String loginOfTeacher = checkLogin();
         System.out.print("Введите пароль: ");
         String passwordOfTeacher = scanner.nextLine();
-        System.out.print("Введите ID: ");
-        int idOfTeacher = scanner.nextInt();
+        int idOfTeacher = checkID();
 
+        Teacher teacher = new Teacher(nameOfTeacher, sorNameOfTeacher, loginOfTeacher, passwordOfTeacher, idOfTeacher);
+        User.arrLogin.add(loginOfTeacher);
+        User.arrID.add(idOfTeacher);
 
-        return new Teacher(nameOfTeacher, sorNameOfTeacher, loginOfTeacher, passwordOfTeacher, idOfTeacher);
+        return teacher;
     }
 
     //-------------------------------------------
-
-
 
         private Dean newDean () throws Exception {
             Scanner scanner = new Scanner(System.in);
@@ -202,15 +205,16 @@ public class Administrator extends User{
             String nameOfDean = scanner.nextLine();
             System.out.print("Введите фамилию: ");
             String sorNameOfDean = scanner.nextLine();
-            System.out.print("Введите логин: ");
-            String loginOfDean = scanner.nextLine();
+            String loginOfDean = checkLogin();
             System.out.print("Введите пароль: ");
             String passwordOfDean = scanner.nextLine();
-            System.out.print("Введите ID: ");
-            int idOfDean = scanner.nextInt();
+            int idOfDean = checkID();
 
+            Dean dean = new Dean(nameOfDean, sorNameOfDean, loginOfDean, passwordOfDean, idOfDean);
+            User.arrLogin.add(loginOfDean);
+            User.arrID.add(idOfDean);
 
-            return new Dean(nameOfDean, sorNameOfDean, loginOfDean, passwordOfDean, idOfDean);
+            return dean;
         }
 
         //-------------------------------------------
@@ -219,10 +223,7 @@ public class Administrator extends User{
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите название группы: ");
         String nameOfGroup = scanner.nextLine();
-
         Group group = new Group(nameOfGroup);
-
-
 
     }
 
