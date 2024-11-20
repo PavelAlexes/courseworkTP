@@ -1,6 +1,7 @@
 package Person;
 
 import Lists.Groups.Group;
+import Lists.Tickets.Subject;
 
 import java.util.Scanner;
 
@@ -17,7 +18,8 @@ public class Administrator extends User{
         boolean flag = true;
         while (flag) {
 
-            System.out.print("1-студент 2-delStud 3-prepod 4-delPrepod 5-Dean 6-delDean 7-addGroup: ");
+            System.out.print("1-студент 2-delStud 3-prepod 4-delPrepod" +
+                    "\n" +"5-Dean 6-delDean 7-addGroup 8-addSubject 9-delSubject: ");
             Scanner scanner = new Scanner(System.in);
             String choise = scanner.nextLine();
 
@@ -97,9 +99,29 @@ public class Administrator extends User{
 
                 case "7":{
                     addGroup();
-
                 }
                 break;
+
+                case "8":{
+                    try{
+                        addSubject();
+                        System.out.println(Subject.arrSubject);
+                        System.out.println(Subject.arrNameOfSubject);
+                    }catch (Exception e){
+                        System.out.println(e.getMessage());
+                    }
+                }
+                break;
+
+                case "9":{
+                    try {
+                        delSubject();
+                        System.out.println(Subject.arrSubject);
+                        System.out.println(Subject.arrNameOfSubject);
+                    }catch (Exception e){
+                        System.out.println(e.getMessage());
+                    }
+                }
             }
         }
     }
@@ -140,6 +162,24 @@ public class Administrator extends User{
 
     //-------------------------------------------
 
+    private String checkNameOfSubject(){
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите название предмета: ");
+        String nameOfSubject = scanner.nextLine();
+        nameOfSubject = nameOfSubject.trim();
+        nameOfSubject = nameOfSubject.substring(0, 1).toUpperCase() + nameOfSubject.substring(1);
+
+        if (Subject.arrNameOfSubject.contains(nameOfSubject)){
+            System.out.println("Такой предмет уже добавлен!");
+            nameOfSubject = checkNameOfSubject();
+        }
+
+        return nameOfSubject;
+    }
+
+    //-------------------------------------------
+
     private Student newStudent() throws Exception {
 
         Scanner scanner = new Scanner(System.in);
@@ -175,6 +215,8 @@ public class Administrator extends User{
 
     private void delTeacher (Teacher teacher){
         Teacher.arrTeacher.remove(teacher);
+        User.arrID.remove(teacher.getID());
+        User.arrLogin.remove(teacher.getLogin());
     }
 
     //-------------------------------------------
@@ -229,12 +271,43 @@ public class Administrator extends User{
 
         //-------------------------------------------
 
-    private void addLesson () {
+    private void addSubject () throws Exception {
+        Scanner scanner = new Scanner(System.in);
+//        System.out.println("Введите название предмета: ");
+//        String nameOfSubject = scanner.nextLine();
+        String nameOfSubject = checkNameOfSubject();
+
+        Subject subject = new Subject(nameOfSubject);
+        Subject.arrNameOfSubject.add(nameOfSubject);
+        Subject.arrSubject.add(subject);
         }
 
         //-------------------------------------------
 
-        private void delLesson () {
+        private void delSubject () throws Exception {
+            Scanner scanner = new Scanner(System.in);
+
+            if(Subject.arrSubject.isEmpty()){
+                System.out.println("Не добавлено ни одного предмета!");
+            }else {
+                System.out.println("Введите название предмета, который хотите удалить: ");
+                String nameOfSubject = scanner.nextLine();
+                nameOfSubject = nameOfSubject.trim();
+                nameOfSubject = nameOfSubject.substring(0, 1).toUpperCase() + nameOfSubject.substring(1);
+                boolean flag = false;
+
+                for (Subject subject : Subject.arrSubject) {
+                    if (subject.getNameOfSubject().equals(nameOfSubject)) {
+                        Subject.arrNameOfSubject.remove(nameOfSubject);
+                        Subject.arrSubject.remove(subject);
+                        System.out.println("Предмет " + nameOfSubject + " удален!");
+                        flag = true;
+                    }
+                }
+                if (!flag){
+                    throw new Exception("Предмет не найден!");
+                }
+            }
         }
 
 

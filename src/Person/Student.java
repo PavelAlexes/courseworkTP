@@ -19,12 +19,9 @@ public class Student extends User{
         System.out.println("Имя: " + super.name);
         System.out.println("ID: " + super.ID);
         System.out.println("Login: " + super.login);
-
     }
 
     //methods-----------------------------------------------------------------------------------------------
-
-
 
     private void examInfoStudent(){}
 

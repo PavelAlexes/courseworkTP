@@ -17,8 +17,6 @@ public class Teacher extends User{
         System.out.println("ID: " + super.ID);
     }
 
-
-
     //methods-----------------------------------------------------------------------------------------------
 
     private void addExam(){}
